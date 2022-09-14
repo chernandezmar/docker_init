@@ -15,6 +15,10 @@ def _find_next_id():
 def get_countries():
     return jsonify(countries)
 
+@app.get("/name")
+def get_name():
+    return ("Carlos Hernandez")
+
 @app.post("/countries")
 def add_country():
     if request.is_json:
