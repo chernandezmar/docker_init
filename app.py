@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+import time
+import datetime
 
 app = Flask(__name__)
 
@@ -14,6 +16,17 @@ def _find_next_id():
 @app.get("/countries")
 def get_countries():
     return jsonify(countries)
+
+@app.get("/nombre")
+def get_nombre():
+    ts = time.time()
+    # print the current timestamp
+    #print(ts)
+    date_time = datetime.datetime.fromtimestamp( ts )
+    datetime_str = date_time.strftime( "%Y/%m/%d'T'%H:%M:%SZ")  
+    #print (date_time)
+    #print (datetime_str)
+    return datetime_str
 
 @app.post("/countries")
 def add_country():

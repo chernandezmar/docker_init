@@ -3,4 +3,6 @@ services:
   web:
     build: .
     ports:
-      - "6666:5000"
+      - "8000:5000"
+    volumes:
+        - ./:/code
