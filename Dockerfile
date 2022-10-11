@@ -6,7 +6,7 @@ ENV FLASK_RUN_HOST=0.0.0.0
 RUN apk add --no-cache gcc musl-dev linux-headers
 COPY requirements.txt requirements.txt
 RUN pip install --upgrade pip
-RUN pip install mysql-connector-python
+RUN pip install mysql-connector-python==8.0.29
 RUN pip install -r requirements.txt
 EXPOSE 5000
 COPY . .

@@ -20,21 +20,28 @@ def get_countries():
 @app.get("/mysql")
 def get_mysql():
     mydb = mysql.connector.connect(
-        host="mysql-db-1",
+        #host="mysql-db-1",
+        host="db",
+        port="3306",
         user="root",
         password="example",
         database="prueba"
         )
+    mydb.set_charset_collation('latin1')
+    print ("aqui")
+    print (mydb)
     mycursor = mydb.cursor()
-
     mycursor.execute("SELECT * FROM ejemplo1")
-
     myresult = mycursor.fetchall()
-
-    for x in myresult:
-        print(x)
+    registro_json = []
+    registro = {}
+    for result in myresult:
+        registro = {'campo1': result[0], 'campo2': result[1], 'campo3': result[2]}
+        registro_json.append(registro)
+        registro = {}
     
-    return (x)
+    return jsonify(registro_json)
+    #return '{} {}'.jsonpay, myresult
 
 @app.route('/hello', methods = ['GET'])
 def hello():
