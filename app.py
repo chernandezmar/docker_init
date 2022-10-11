@@ -28,8 +28,6 @@ def get_mysql():
         database="prueba"
         )
     mydb.set_charset_collation('latin1')
-    print ("aqui")
-    print (mydb)
     mycursor = mydb.cursor()
     mycursor.execute("SELECT * FROM ejemplo1")
     myresult = mycursor.fetchall()
