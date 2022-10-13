@@ -17,3 +17,9 @@ INSERT INTO `ejemplo1` (`campo1`, `campo2`, `campo3`) VALUES
 ('dos',	'dos',	2),
 ('tres',	'tres',	3),
 ('prueba',	'prueba',	18);
+
+-------------------------------------------------------------
+
+para insertar datos usando POST
+
+curl -XPOST -H 'Content-Type: application/json' http://localhost:8000/mysql -d ' { "campo1": "prueba", "campo2":"prueba", "campo3": "18" }'
