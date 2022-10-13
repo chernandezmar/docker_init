@@ -41,6 +41,28 @@ def get_mysql():
     return jsonify(registro_json)
     #return '{} {}'.jsonpay, myresult
 
+@app.post("/mysql")
+def post_mysql():
+    if request.is_json:
+        registro = request.get_json()
+        sql = "insert into ejemplo1 values ('" + registro['campo1'] + "','" + registro['campo2'] + "'," + registro['campo3'] + ");"
+        mydb = mysql.connector.connect(
+            #host="mysql-db-1",
+            host="db",
+            port="3306",
+            user="root",
+            password="example",
+            database="prueba"
+        )
+        mycursor=mydb.cursor()
+        mycursor.execute(sql)
+
+        return sql
+
+
+    
+    return "no",402
+
 @app.route('/hello', methods = ['GET'])
 def hello():
     name = request.args.get('name')
